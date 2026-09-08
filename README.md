@@ -15,7 +15,7 @@ Azure DevOps Rack Test Status Dashboard 提供 Tampermonkey userscript 與原生
 v1.11.0 的預設唯讀資料來源為 Azure DevOps Test Plan：
 
 - 名稱：`C4143_CRDv4.1 Qual`
-- URL：`https://azurecsi.visualstudio.com/Dev/_testPlans/charts?planId=2783433&suiteId=3942624`
+- URL：`https://azurecsi.visualstudio.com/Dev/_testPlans/charts?planId=3995643&suiteId=3995646`
 - Dashboard 會辨識所選分支下的六個 Test Suite，並遞迴讀取每個 Suite 的所有子階層與 Test Points。
 
 選擇另一個 Query 後，Dashboard 會重新執行該 Query，並以相同的 Overview、Rack、Insights、Test Features 與匯出格式呈現。標題、來源連結、Work Item hyperlinks 與匯出檔名也會同步改成目前選擇的 Query。
