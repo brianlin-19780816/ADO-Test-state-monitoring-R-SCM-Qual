@@ -1,12 +1,12 @@
 // ==UserScript==
-// @name         C4143 CRDv4.1 Qual Test Status Dashboard
+// @name         R-SCM Qual Test Status Dashboard
 // @namespace    local.ado.dvscale.dashboard
-// @version      1.11.6
+// @version      1.11.7
 // @description  Adds a multi-project Query selector, real Test Results, XLSX exports, query-scoped snapshots, and Extension support.
-// @homepageURL  https://github.com/brianlin-19780816/ADO-Test-state-monitoring-C4143-CRDv4.1-Qual
-// @supportURL   https://github.com/brianlin-19780816/ADO-Test-state-monitoring-C4143-CRDv4.1-Qual/issues
-// @updateURL    https://raw.githubusercontent.com/brianlin-19780816/ADO-Test-state-monitoring-C4143-CRDv4.1-Qual/main/C4143-CRD4.1-Dashboard.user.js
-// @downloadURL  https://raw.githubusercontent.com/brianlin-19780816/ADO-Test-state-monitoring-C4143-CRDv4.1-Qual/main/C4143-CRD4.1-Dashboard.user.js
+// @homepageURL  https://github.com/brianlin-19780816/ADO-Test-state-monitoring-R-SCM-Qual
+// @supportURL   https://github.com/brianlin-19780816/ADO-Test-state-monitoring-R-SCM-Qual/issues
+// @updateURL    https://raw.githubusercontent.com/brianlin-19780816/ADO-Test-state-monitoring-R-SCM-Qual/main/C4143-CRD4.1-Dashboard.user.js
+// @downloadURL  https://raw.githubusercontent.com/brianlin-19780816/ADO-Test-state-monitoring-R-SCM-Qual/main/C4143-CRD4.1-Dashboard.user.js
 // @match        https://azurecsi.visualstudio.com/*
 // @run-at       document-idle
 // @grant        none
@@ -14,8 +14,8 @@
 
 /* ------------------------------------------------------------------
  How to use
-  1) Install Tampermonkey, import this file, then open the dedicated CRDv4.1 Qual entry:
-     https://azurecsi.visualstudio.com/_apis/projects?api-version=6.0#crdv41qual
+  1) Install Tampermonkey, import this file, then open the dedicated R-SCM Qual entry:
+     https://azurecsi.visualstudio.com/_apis/projects?api-version=6.0#rscmqual
     Every open or F5 refresh re-runs the query and redraws the dashboard.
 
  2) Data source modes (dropdown at the top left; your choice is saved in localStorage):
@@ -54,7 +54,7 @@
 (function () {
   "use strict";
   var extensionContext = window.__C4143_EXTENSION__ || null;
-  var isDashboardEntry = !!extensionContext || location.hash.toLowerCase().indexOf("crdv41qual") >= 0;
+  var isDashboardEntry = !!extensionContext || location.hash.toLowerCase().indexOf("rscmqual") >= 0;
   if (!isDashboardEntry) return;
   var D = {};
   D.CFG = {"org":"https://azurecsi.visualstudio.com","orgName":"azurecsi","project":"Dev","sourceType":"testPlan","planId":3995643,"suiteId":3995646,"queryId":"","queryUrl":"https://azurecsi.visualstudio.com/Dev/_testPlans/charts?planId=3995643&suiteId=3995646","testResultDays":28};
@@ -67,7 +67,7 @@
       : D.CFG.org + '/' + encodeURIComponent(D.CFG.project) + '/_queries/query/' + D.CFG.queryId + '/';
   }
   D.DEFAULT_QUERIES = [
-    { name: 'C4143_CRDv4.1 Qual', org: 'https://azurecsi.visualstudio.com', orgName: 'azurecsi', project: 'Dev', sourceType: 'testPlan', planId: 3995643, suiteId: 3995646, queryId: '', queryUrl: 'https://azurecsi.visualstudio.com/Dev/_testPlans/charts?planId=3995643&suiteId=3995646', builtin: true },
+    { name: 'R-SCM Qual', org: 'https://azurecsi.visualstudio.com', orgName: 'azurecsi', project: 'Dev', sourceType: 'testPlan', planId: 3995643, suiteId: 3995646, queryId: '', queryUrl: 'https://azurecsi.visualstudio.com/Dev/_testPlans/charts?planId=3995643&suiteId=3995646', builtin: true },
     { name: '[EchoFalls][C4142][PSE] EVT - Scale Testing', org: 'https://azurecsi.visualstudio.com', orgName: 'azurecsi', project: 'Dev', queryId: '6e06c765-2ff5-43c4-80c6-e78438eea6d9', queryUrl: 'https://azurecsi.visualstudio.com/Dev/_queries/query/6e06c765-2ff5-43c4-80c6-e78438eea6d9/', builtin: true }
   ];
   D.STATE_COLORS = {"Not Started":"#94a3b8","New":"#60a5fa","Proposed":"#f5b544","Design":"#a78bfa","In Progress":"#818cf8","Active":"#818cf8","Ready":"#38bdf8","Committed":"#22d3ee","Passed":"#34d399","Closed":"#2dd4bf","Done":"#2dd4bf","Completed":"#2dd4bf","Failed":"#f87171","Blocked":"#fb7185","Removed":"#9ca3af","Resolved":"#22d3ee","Paused":"#fbbf24"};
