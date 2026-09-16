@@ -79,9 +79,9 @@ localStorage（origin `https://azurecsi.visualstudio.com`）使用到的 key：
 | Organization | `azurecsi`（`https://azurecsi.visualstudio.com`） |
 | Project | `Dev` |
 | Test Plan 名稱 | `C4143_CRDv4.1 Qual` |
-| Test Plan ID | `3995643` |
-| Selected Suite ID | `3995646` |
-| Test Plan 頁面 | `https://azurecsi.visualstudio.com/Dev/_testPlans/charts?planId=3995643&suiteId=3995646` |
+| Test Plan ID | `4017580` |
+| Selected Suite ID | `4017581` |
+| Test Plan 頁面 | `https://azurecsi.visualstudio.com/Dev/_testPlans/charts?planId=4017580&suiteId=4017581` |
 | Dashboard 分組 | 所選分支下的六個 Test Suite；每組遞迴包含全部子階層 |
 
 v1.10.0 另內建第二個 Query：
